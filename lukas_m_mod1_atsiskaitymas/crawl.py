@@ -6,18 +6,27 @@ class Article:
     def __init__(self, source):
         self.source = source
 
-    def get_subject(self):
-        time_limit = 60
-        formats =['.csv', '.txt', ".json"]
+    def get_articles(self):
         response = get(self.source)
         text = response.text
         tree = HTML(text)
         articles = tree.xpath("//div[contains(@class, 'col-span-12 lg:col-span-4')]")
+        return articles
+
+    def get_subject(self):
+        time_limit = 60
         subject_list = []
-        for article in articles:
+        for article in self.get_articles():
             subject = article.xpath(".//h2/a/text()")[0].strip()
             subject_list.append(subject)
         return subject_list
+
+    def get_article_url(self):
+        ...
+
+    def save_as(self):
+        formats = ['.csv', '.txt', ".json"]
+
 
 
 article1 = Article("https://www.lrytas.lt/")
