@@ -22,7 +22,11 @@ class Article:
         return subject_list
 
     def get_article_url(self):
-        ...
+        url_list = []
+        for link in self.get_articles():
+            url = link.xpath(".//a/@href")
+            url_list.append(url)
+        return url_list
 
     def save_as(self):
         formats = ['.csv', '.txt', ".json"]
@@ -30,4 +34,6 @@ class Article:
 
 
 article1 = Article("https://www.lrytas.lt/")
-print(article1.get_subject())
+#print(article1.get_subject())
+print(article1.get_article_url())
+#print(article1.get_articles())
