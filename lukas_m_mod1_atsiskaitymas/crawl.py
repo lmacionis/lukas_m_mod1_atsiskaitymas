@@ -21,10 +21,10 @@ class Article:
             subject_list.append(subject)
         return subject_list
 
-    def get_article_url(self):
+    def get_article_url(self, url=None):
         url_list = []
         for link in self.get_articles():
-            url = link.xpath(".//a/@href")
+            url = link.xpath(".//a/@href")[0]
             url_list.append(url)
         return url_list
 
@@ -33,7 +33,10 @@ class Article:
 
 
 
-article1 = Article("https://www.lrytas.lt/")
-#print(article1.get_subject())
-print(article1.get_article_url())
+source_url = "https://www.lrytas.lt"
+article1 = Article(source_url)
+title = article1.get_subject()
+article_url = article1.get_article_url()
 #print(article1.get_articles())
+
+
