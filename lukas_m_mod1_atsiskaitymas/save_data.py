@@ -1,10 +1,8 @@
-from lukas_m_mod1_atsiskaitymas.crawl import article_urls, titles, source_url
 import pandas as pd
 import re
-import pprint
 import json
 
-def save_as_csv():
+def save_as_csv(source_url, titles, article_urls):
     url_of_article = [source_url + item for item in article_urls]
 
     dict_for_csv = {'Title': titles, 'LINK': url_of_article}
@@ -13,7 +11,7 @@ def save_as_csv():
     df.index += 1                           # In terminal shows that it starts from 1, but in libre it still starts from 0
 
 
-def create_dict():
+def create_dict(source_url, titles, article_urls):
     data_dict = {}
     temp_key = "Subject 0"
     url_of_articles = [source_url + item for item in article_urls]
@@ -37,8 +35,6 @@ def create_dict():
     return data_dict
 
 
-def save_as_json():
+def save_as_json(source_url, titles, article_urls):
     with open("dict_data.json", "w") as file:
-        json.dump(create_dict(), file)
-
-save_as_json()
+        json.dump(create_dict(source_url, titles, article_urls), file)
