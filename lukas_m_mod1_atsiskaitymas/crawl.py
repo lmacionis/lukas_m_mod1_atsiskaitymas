@@ -10,7 +10,7 @@ class Article:
         response = get(self.source)
         text = response.text
         tree = HTML(text)
-        articles = tree.xpath("//div[contains(@class, 'col-span-12 lg:col-span-4')]")
+        articles = tree.xpath("//div[contains(@class, 'col-span-12 lg:col-span')]")
         return articles
 
     def get_subject(self):
@@ -35,8 +35,8 @@ class Article:
 
 source_url = "https://www.lrytas.lt"
 article1 = Article(source_url)
-title = article1.get_subject()
-article_url = article1.get_article_url()
+titles = article1.get_subject()
+article_urls = article1.get_article_url()
 #print(article1.get_articles())
 
 
