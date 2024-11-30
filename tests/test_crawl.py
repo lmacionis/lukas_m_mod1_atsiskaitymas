@@ -26,6 +26,14 @@ class TestCrawl(unittest.TestCase):
         data = Article("https://example.com")
         assert data.get_articles() == []
 
+    def test_get_subject(self):
+        data = Article("https://example.com")
+        assert data.get_subject() == []
+
+    def test_get_article_url(self):
+        data = Article("https://example.com")
+        assert data.get_article_url() == []
+
 
 if __name__ == "__main__":
     unittest.main()

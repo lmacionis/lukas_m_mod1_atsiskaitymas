@@ -25,7 +25,7 @@ class Article:
         for article in articles_list[0]:
             subject = article.xpath(".//h2/a/text()")[0].strip()
             subject_list.append(subject)
-        print(subject_list)
+
         return subject_list
 
     def get_article_url(self):
@@ -36,5 +36,4 @@ class Article:
             url = link.xpath(".//a/@href")[0]
             url_list.append(url)
 
-        print(url_list)
         return url_list
