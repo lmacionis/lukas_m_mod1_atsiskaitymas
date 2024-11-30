@@ -7,10 +7,9 @@ from unittest.mock import patch
 class TestCrawl(unittest.TestCase):
     @patch("requests.get")
 
-    # ToDo does not raise HTTPError because HTML(text) in crawl.py, only parse strings, and now it get status_code 200
     def test_get_articles(self, mock_get):
-        article = Article("https://google.com")
-        mock_get.return_value.status_code = 200
+        article = Article("www.example.com")
+        mock_get.return_value.status_code = 400
 
         with self.assertRaises(HTTPError):
             article.get_articles()
