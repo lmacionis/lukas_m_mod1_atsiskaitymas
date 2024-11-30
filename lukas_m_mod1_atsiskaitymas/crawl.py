@@ -11,10 +11,16 @@ class Article:
         response = requests.get(self.source)
 
         if response.status_code == 200:
-            text = response.text    # str
-            tree = HTML(text)
-            articles = tree.xpath("//div[contains(@class, 'col-span-12 lg:col-span')]")
-            return articles
+            try:
+                text = response.text   # str
+                tree = HTML(text)
+                assert isinstance(text, str)
+
+                articles = tree.xpath("//div[contains(@class, 'col-span-12 lg:col-span')]")
+                return articles
+
+            except Exception as error:
+                raise ValueError(f"Wrong data type: {error}")
         else:
             raise HTTPError(f"Page is unreachable: {response.status_code}")
 
