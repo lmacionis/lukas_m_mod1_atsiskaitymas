@@ -24,6 +24,7 @@ class Article:
         else:
             raise HTTPError(f"Page is unreachable: {response.status_code}")
 
+
     def get_subject(self):
         articles_list = [self.get_articles()]
         subject_list = []
