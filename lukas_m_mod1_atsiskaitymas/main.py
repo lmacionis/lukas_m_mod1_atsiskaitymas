@@ -24,4 +24,4 @@ def crawl(source, return_format="json", time_limit=60):
 
 
 if __name__=="__main__":
-    crawl(source="lrytas", return_format="csv")
+    crawl(source="lrytas", return_format="json")

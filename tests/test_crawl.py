@@ -25,7 +25,7 @@ class TestCrawl(unittest.TestCase):
         try:
             self.data.get_articles()
         except Exception as error:
-            raise ValueError({error})
+            raise TypeError({error})
 
 
     def test_get_articles(self):

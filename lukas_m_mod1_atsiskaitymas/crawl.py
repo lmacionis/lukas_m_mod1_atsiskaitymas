@@ -13,14 +13,14 @@ class Article:
         if response.status_code == 200:
             try:
                 text = response.text   # str
-                tree = HTML(text)
                 assert isinstance(text, str)
 
+                tree = HTML(text)
                 articles = tree.xpath("//div[contains(@class, 'col-span-12 lg:col-span')]")
                 return articles
 
             except Exception as error:
-                raise ValueError(f"Wrong data type: {error}")
+                raise TypeError(f"Wrong data type: {error}")
         else:
             raise HTTPError(f"Page is unreachable: {response.status_code}")
 
@@ -34,6 +34,7 @@ class Article:
             subject_list.append(subject)
 
         return subject_list
+
 
     def get_article_url(self):
         articles_list = [self.get_articles()]
